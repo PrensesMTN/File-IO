@@ -2,18 +2,16 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 import customtkinter as ctk
 from PIL import ImageTk,Image
-import main
+#from mtn import App
 import os
 import csv
 
 ctk.set_appearance_mode("System")  # Modes: system (default), light, dark
 ctk.set_default_color_theme("green")  # Themes: blue (default), dark-blue, green
 
-
 app = ctk.CTk()  #creating cutstom tkinter window
 app.geometry("600x440")
 app.title('Persion Tech Giriş Ekranı')
-
 
 def authenticate_user(username, password):
     file_name = 'users.csv'
@@ -43,15 +41,12 @@ def user_login():
     else:
         messagebox.showerror("Hata", "Kullanıcı Adı veya Şifre Hatalı")
 
-
-
 resim_adi = "persion_600_x_440_piksel.png"
 resim_dizini = os.path.abspath(os.path.dirname(__file__))
 resim_yolu = os.path.join(resim_dizini, resim_adi)
 img1 = ImageTk.PhotoImage(Image.open(resim_yolu))
 l1=ctk.CTkLabel(master=app,image=img1)
 l1.pack()
-
 
 #creating custom frame
 frame=ctk.CTkFrame(master=l1, width=320, height=360, corner_radius=15)
@@ -66,14 +61,11 @@ entry1.place(x=50, y=110)
 entry2=ctk.CTkEntry(master=frame, width=220, placeholder_text='Şifre', show="*")
 entry2.place(x=50, y=165)
 
-
 #Create custom button
 button1 = ctk.CTkButton(master=frame, width=220, text="Giriş Yap", command=user_login, corner_radius=6)
 button1.place(x=50, y=240)
 
-
 app.resizable(False,False)
-
 
 # You can easily integrate authentication system 
 
